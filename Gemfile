@@ -15,10 +15,12 @@ gem 'sass-rails',                 '6.0.0'
 gem 'webpacker',                  '4.2.2'
 gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
+# pg был только в продакшне
+gem 'pg',                         '1.2.3'
 gem 'bootsnap',                   '1.4.6', require: false
 
 group :development, :test do
-  gem 'sqlite3', '1.4.2'
+  # удалил гем sqlite3
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -41,6 +43,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '1.2.3'
   gem 'aws-sdk-s3', '1.46.0', require: false
 end
