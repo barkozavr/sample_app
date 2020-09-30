@@ -15,12 +15,14 @@ gem 'sass-rails',                 '6.0.0'
 gem 'webpacker',                  '4.2.2'
 gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
-# pg был только в продакшне
+# pg was only in production
 gem 'pg',                         '1.2.3'
 gem 'bootsnap',                   '1.4.6', require: false
+# I will run autocorrect as last step.
+gem 'rubocop-rails',                       require: false
 
 group :development, :test do
-  # удалил гем sqlite3
+  # deleted gem sqlite3
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end
 

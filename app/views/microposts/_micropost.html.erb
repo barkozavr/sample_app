@@ -11,5 +11,12 @@
 			<%= link_to "delete", micropost, method: :delete,
 											 data: { confirm: "Вы уверены?" } %>
 		<% end %>
+		<!-- just count of created votes -->
+		<p><%= @micropost.votes.count %></p>
+		<!-- simple implementation of button that create one vote -->
+		<!-- the error message is: -->
+        <!-- No route matches {:action=>"index", :controller=>"votes", 
+		:micropost_id=>nil}, missing required keys: [:micropost_id] -->
+		<%= button_to 'Vote', micropost_votes_path(@micropost), method: :post %>
 	</span>
 </li>

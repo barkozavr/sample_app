@@ -1,4 +1,4 @@
-# изменил конфигурацию бд для среды разработки и тестирования
+# new configuration for using pg database in each environments
 default: &default
   adapter: postgresql
   encoding: unicode
