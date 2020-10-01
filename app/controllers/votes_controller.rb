@@ -5,7 +5,8 @@ class VotesController < ApplicationController
   # create one grade on "Like"-system. I am try using like-system because it more easy. 
   # I just try to make MVC work, after that way to votes-system
   def create
-    @micropost.votes.create(user_id: current_user.id)
+    @vote = @micropost.votes.create(votes_params, user_id: current_user.id)
+
     redirect_to root_url #will change it later
   end
 
@@ -13,7 +14,11 @@ class VotesController < ApplicationController
 
   # is it correct? 
   def find_micropost
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.find(params[:micropost_id])
+  end
+
+  def votes_params
+      params.require(:vote).permit(:grades)
   end
 
 end

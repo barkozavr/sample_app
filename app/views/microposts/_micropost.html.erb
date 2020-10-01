@@ -12,11 +12,13 @@
 											 data: { confirm: "Вы уверены?" } %>
 		<% end %>
 		<!-- just count of created votes -->
-		<p><%= @micropost.votes.count %></p>
-		<!-- simple implementation of button that create one vote -->
-		<!-- the error message is: -->
-        <!-- No route matches {:action=>"index", :controller=>"votes", 
-		:micropost_id=>nil}, missing required keys: [:micropost_id] -->
-		<%= button_to 'Vote', micropost_votes_path(@micropost), method: :post %>
+		<p><%= micropost.votes.count %></p>
 	</span>
+	<%= form_with( url: micropost_votes_path(micropost), local: true) do |f| %>
+
+	  <%= f.label 'From 1 to 5' %>
+      <%= f.text_field :grades%>
+
+      <%= f.submit 'Vote', class: "btn btn-primary" %>
+    <% end %>
 </li>
