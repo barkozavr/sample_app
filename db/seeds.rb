@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Create a main sample user.
-User.create!(name:  "Pavel Barkov",
-             email: "thakur.ids@gmail.com",
-             password:              "000000",
-             password_confirmation: "000000",
+User.create!(name: 'Pavel Barkov',
+             email: 'thakur.ids@gmail.com',
+             password: '000000',
+             password_confirmation: '000000',
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
@@ -17,11 +17,11 @@ User.create!(name:  "Pavel Barkov",
 # Generate a bunch of additional users.
 30.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@mail.ru"
-  password = "password"
-  User.create!(name:  name,
+  email = "example-#{n + 1}@mail.ru"
+  password = 'password'
+  User.create!(name: name,
                email: email,
-               password:              password,
+               password: password,
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
@@ -33,7 +33,7 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
-#create following relationships
+# create following relationships
 users = User.all
 user = users.first
 following = users[2..50]

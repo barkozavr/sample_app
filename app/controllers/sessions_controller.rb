@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
+
   def create
-  	user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       if user.activated?
         forwarding_url = session[:forwarding_url]
-      	reset_session
-      	log_in user
+        reset_session
+        log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      	redirect_to forwarding_url || user
+        redirect_to forwarding_url || user
       else
-        message = "Аккаунт не активирован. "
-        message += "Проверьте email для активации акаунта."
+        message = 'Аккаунт не активирован. '
+        message += 'Проверьте email для активации акаунта.'
         flash[:warning] = message
         redirect_to root_url
       end
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
+
   def destroy
     log_out if logged_in?
     redirect_to root_url
