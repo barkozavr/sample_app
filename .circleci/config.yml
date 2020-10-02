@@ -1,3 +1,19 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install 
+
   rubocop:
     executor: default
     steps:
@@ -8,11 +24,11 @@
           name: Rubocop
           command: bundle exec rubocop
 
-workflows:
-  version: 2
-  integration:
-    jobs:
-      - build
-      - rubocop:
-          requires:
-            - build
+  workflows:
+    version: 2
+    integration:
+      jobs:
+        - build
+        - rubocop:
+            requires:
+              - build
