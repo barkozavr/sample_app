@@ -24,6 +24,7 @@ gem 'rubocop-rails', require: false
 group :development, :test do
   # deleted gem sqlite3
   gem 'byebug', '11.1.3', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
