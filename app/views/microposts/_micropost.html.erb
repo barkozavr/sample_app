@@ -1,4 +1,4 @@
-<li id="micropost-<%= micropost.id %>">
+ <li id="micropost-<%= micropost.id %>">
 	<%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
 	<span class="user"><%= link_to micropost.user.name, micropost.user %></span>
 	<span class="content">
@@ -11,12 +11,9 @@
 			<%= link_to "delete", micropost, method: :delete,
 											 data: { confirm: "Вы уверены?" } %>
 		<% end %>
-		<!-- I know it wery ugly and this code should be in model or in helper (I guess) -->
-		<% arr = micropost.votes.collect {|i| i[:grades].to_f } %>
-		<p> <%= arr == [] ? 'No votes' : arr.inject{ |sum, el| sum + el }.to_f / arr.size %> </p>
 	</span>
+    <%= average_rating(micropost.votes) %>
     <% if voted(micropost.votes) == false %>
-    <!-- You will probably laugh at my voting form)) -->
 		<%= form_with( url: micropost_votes_path(micropost), local: true) do |f| %>
 		  <%= f.label 'Vote it 1 to 5' %>
 	      <%= f.text_field :grades%>
