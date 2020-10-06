@@ -20,10 +20,12 @@ gem 'bootsnap',                   '1.4.6', require: false
 gem 'pg',                         '1.2.3'
 # I will run autocorrect as last step.
 gem 'rubocop-rails', require: false
+gem 'dry-monads'
 
 group :development, :test do
   # deleted gem sqlite3
   gem 'byebug', '11.1.3', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
